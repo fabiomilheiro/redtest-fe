@@ -15,7 +15,6 @@ const enterPercentageValue = (app, name, value) => {
 const selectCalculationType = (app, value) => {
   const input = app.getByTestId(`calculationType-${value}`);
 
-  fireEvent.select(input);
   fireEvent.click(input);
 };
 
