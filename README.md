@@ -1,6 +1,7 @@
 Frontend project for [Redtest repository](https://github.com/fabiomilheiro/redtest).
 
 > npm install
+
 > npm start
 
 To run the tests, use:
