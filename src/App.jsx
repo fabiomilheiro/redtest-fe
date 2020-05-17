@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  Container,
-  CssBaseline,
-  ThemeProvider,
-  Button,
-} from "@material-ui/core";
+import { Container, CssBaseline, ThemeProvider } from "@material-ui/core";
 import themes from "./styles/themes";
 import ThemeContext from "./styles/themeContext";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import CalculationForm from "./components/CalculationForm/CalculationForm";
+import CalculationsTable from "./components/CalculationsTable/CalculationsTable";
 
 class App extends Component {
   setTheme = (newTheme) => {
@@ -28,6 +24,13 @@ class App extends Component {
       currentTheme: themes.green,
       setTheme: this.setTheme,
     },
+    results: [],
+  };
+
+  addResult = (result) => {
+    this.setState((previousState) => ({
+      results: [result, ...previousState.results],
+    }));
   };
 
   render() {
@@ -37,12 +40,11 @@ class App extends Component {
           <ThemeProvider theme={this.state.themeContext.currentTheme.muiTheme}>
             <CssBaseline />
             <NavigationBar />
-
-            <Container fixed>
-              <CalculationForm />
-              <Button variant="contained" color="primary">
-                OK
-              </Button>
+            <Container fixed maxWidth="sm">
+              <CalculationForm
+                onCalculated={(result) => this.addResult(result)}
+              />
+              <CalculationsTable results={this.state.results} />
             </Container>
           </ThemeProvider>
         </ThemeContext.Provider>

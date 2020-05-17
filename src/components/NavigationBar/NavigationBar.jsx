@@ -20,7 +20,7 @@ const NavigationBar = () => {
           <Typography variant="h6" className={classes.title}>
             Calculations
           </Typography>
-          <ThemeSelector />
+          {/* <ThemeSelector /> */}
         </Toolbar>
       </AppBar>
     </div>
